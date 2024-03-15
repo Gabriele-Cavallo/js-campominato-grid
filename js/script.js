@@ -18,17 +18,7 @@ let play = document.querySelector('#play');
 // - Creo l'evento click
     //  - Attivo e disattivo la tabella al click
 let active = false;
-play.addEventListener('click', function(){
-    if(active === true){
-        userGrid.classList.remove('active');
-        userGrid.classList.add('hide');  
-        active = false; 
-    }else if(active === false){
-        userGrid.classList.remove('hide');
-        userGrid.classList.add('active');  
-        active = true; 
-    }
-})
+playGrid();
 // - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
@@ -57,5 +47,20 @@ function createSquare(number){
 function clickSquare(gridItem){
     gridItem.addEventListener('click', function(){
         this.classList.toggle('azure');
+    });
+}
+
+// funzione per attivare o disattivare la griglia di gioco al click del bottone play
+function playGrid(){
+    play.addEventListener('click', function(){
+        if(active === true){
+            userGrid.classList.remove('active');
+            userGrid.classList.add('hide');  
+            active = false; 
+        }else if(active === false){
+            userGrid.classList.remove('hide');
+            userGrid.classList.add('active');  
+            active = true; 
+        }
     });
 }
