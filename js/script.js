@@ -21,6 +21,7 @@
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
     let gridSquare = createSquare(i + 1);
+    clickSquare(gridSquare);
     userGrid.append(gridSquare);
 }
 
