@@ -47,6 +47,7 @@ function createSquare(number){
 function clickSquare(gridItem){
     gridItem.addEventListener('click', function(){
         this.classList.toggle('azure');
+        console.log('this-square' , this.children[0].innerHTML);
     });
 }
 
