@@ -13,6 +13,22 @@
 // - con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
 // - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 
+// - Genero l'elemento del dom al cui click si crea la tabella di gioco
+let play = document.querySelector('#play');
+// - Creo l'evento click
+    //  - Attivo e disattivo la tabella al click
+let active = false;
+play.addEventListener('click', function(){
+    if(active === true){
+        userGrid.classList.remove('active');
+        userGrid.classList.add('hide');  
+        active = false; 
+    }else if(active === false){
+        userGrid.classList.remove('hide');
+        userGrid.classList.add('active');  
+        active = true; 
+    }
+})
 // - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
@@ -23,6 +39,7 @@ for (let i = 0; i < 100; i++) {
     clickSquare(gridSquare);
     userGrid.append(gridSquare);
 }
+
 
 // FUNCTIONS
 
