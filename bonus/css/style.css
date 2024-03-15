@@ -61,7 +61,27 @@ main{
     align-items: center;
     font-size: 25px;
 }
-.square.azure{
+.square-normal{
+    height: calc(100% / 9);
+    width: calc(100% / 9);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.square-hard{
+    height: calc(100% / 7);
+    width: calc(100% / 7);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.square.azure,
+.square-normal.azure,
+.square-hard.azure{
     background-color: rgb(42, 234, 234);
 }
 

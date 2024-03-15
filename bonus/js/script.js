@@ -15,33 +15,46 @@
 
 // - Genero l'elemento del dom al cui click si crea la tabella di gioco
 let play = document.querySelector('#play');
-// - Creo l'evento click
-    //  - Attivo e disattivo la tabella al click
-let active = false;
-playGrid();
-// - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
-let userGrid = document.querySelector('#grid');
-for (let i = 0; i < 100; i++) {
-    // - Creo l'elemento base del DOM
-    let gridSquare = createSquare(i + 1);
-    // - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
-    // - Inserisco la funzione nel ciclo del programma
-    clickSquare(gridSquare);
-    userGrid.append(gridSquare);
-}
+// - Creo l'evento click che fa apparire la tabella
+    // - Attivo e disattivo la tabella al click
+    let active = false;
+    // - Dichiaro la difficoltà in base al select input
+    let difficoltà;
+    // - Genero la tabella numerata proggressivamente in base alla difficoltà
+    let userGrid = document.querySelector('#grid');
+    playGrid();
 
 
 // FUNCTIONS
 
-// funzione per creare gli item della tabella
+// funzione che legge il valore di difficoltà selezionato dal giocatore e assegna un valore alla variabile difficoltà
+function difficulty(){
+    let gameDifficulty = document.querySelector('#difficulty-choice').value;
+        if (gameDifficulty === 'easy'){
+            difficoltà = 100;
+        }else if (gameDifficulty === 'normal'){
+            difficoltà = 81;
+        }else if (gameDifficulty === 'hard'){
+            difficoltà = 49;
+        }
+}
+
+// funzione per creare gli item della tabella in base alla difficoltà
 // number ----> numero intero usato per calcolare quante celle devono essere create
 // return ----> l'item che deve andare a popolare la grid
 function createSquare(number){
     let square = document.createElement('div');
-    square.classList.add('square');
+    if (difficoltà === 100){
+        square.classList.add('square');
+    }else if (difficoltà === 81){
+        square.classList.add('square-normal');
+    }else if (difficoltà === 49){
+        square.classList.add('square-hard');
+    }
     square.innerHTML = `<span>${number}</span>`;
     return square;
 }
+
 // funzione per colorare i grid item al click 
 // gridItem ---> item del DOM a cui applicare l'evento click
 function clickSquare(gridItem){
@@ -50,17 +63,36 @@ function clickSquare(gridItem){
     });
 }
 
+
+
 // funzione per attivare o disattivare la griglia di gioco al click del bottone play
 function playGrid(){
     play.addEventListener('click', function(){
+        // - Imposto il livello di difficoltà in base alla scelta del giocatore
+        difficulty();
+        // - Attivo o nascondo la griglia in base al suo stato attuale
         if(active === true){
             userGrid.classList.remove('active');
             userGrid.classList.add('hide');  
+            userGrid.innerHTML = '';
+            play.innerHTML = 'Play';
             active = false; 
         }else if(active === false){
+            // - Genero una griglia in base alla difficoltà impostata
+            for (let i = 0; i < difficoltà; i++) {
+                let gridSquare = createSquare(i + 1);
+                // - Modifico il colore di background della cella al click
+                // - al secondo click il colore di background ritorna quello base
+                clickSquare(gridSquare);
+                // - Popolo la griglia di gioco
+                userGrid.append(gridSquare);
+            }
             userGrid.classList.remove('hide');
             userGrid.classList.add('active');  
+            play.innerHTML = 'Reset';
             active = true; 
         }
     });
+    
 }
+
