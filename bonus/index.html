@@ -12,7 +12,17 @@
             <span>Logo</span>
             <h1>Campo Minato</h1>
         </div>
-        <button id="play">Play</button>
+        <div class="difficulty-play flex gap-20">
+            <div>
+                <label for="difficulty-choice">Livello di difficoltà: </label>
+                <select id="difficulty-choice">
+                    <option value="easy">Easy</option>
+                    <option value="normal">Normal</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <button id="play">Play</button>
+        </div>
     </header>
     <main>
         <div class="flex hide" id="grid">
