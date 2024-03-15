@@ -8,6 +8,10 @@
 /* #endregion Reset */
 
 /* #region General */
+img{
+    max-height: 60px;
+    margin-left: -15px;
+}
 #grid{
     width: 800px;
     height: 800px;
