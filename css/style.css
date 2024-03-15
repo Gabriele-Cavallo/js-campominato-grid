@@ -21,7 +21,8 @@
     border: 1px solid black;
 }
 main{
-    height: calc(100vh - 240px)
+    height: calc(100vh - 240px);
+    overflow-x: auto;
 }
 header, footer{
     display: flex;
@@ -53,6 +54,9 @@ main{
     justify-content: center;
     align-items: center;
     font-size: 25px;
+}
+.square.azure{
+    background-color: rgb(42, 234, 234);
 }
 
 /* #endregion General */

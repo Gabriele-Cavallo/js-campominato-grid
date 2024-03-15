@@ -14,9 +14,9 @@
 // - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 
 // 1 - Creo l'elemento base del DOM
-let square = document.createElement('div');
-square.classList.add('square');
-square.innerHTML = `<span>1</span>`;
+// let square = document.createElement('div');
+// square.classList.add('square');
+// square.innerHTML = `<span>1</span>`;
 // 2 - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
@@ -25,5 +25,11 @@ for (let i = 0; i < 100; i++) {
     square.innerHTML = `<span>${i + 1}</span>`;
     userGrid.append(square);
 }
+
 // 3 - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
+function clickSquare(){
+    square.addEventListener('click', function(){
+        this.classList.add('azure');
+    });
+}
 // 4 - Inserisco la funzione nel ciclo del programma
