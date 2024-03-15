@@ -13,25 +13,16 @@
 // - con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
 // - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 
-// 1 - Creo l'elemento base del DOM
-// let square = document.createElement('div');
-// square.classList.add('square');
-// square.innerHTML = `<span>1</span>`;
-// 2 - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
+// - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
+    // - Creo l'elemento base del DOM
     let gridSquare = createSquare(i + 1);
+    // - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
+    // - Inserisco la funzione nel ciclo del programma
     clickSquare(gridSquare);
     userGrid.append(gridSquare);
 }
-
-// 3 - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
-function clickSquare(gridItem){
-    gridItem.addEventListener('click', function(){
-        this.classList.toggle('azure');
-    });
-}
-// 4 - Inserisco la funzione nel ciclo del programma
 
 // FUNCTIONS
 
@@ -43,4 +34,11 @@ function createSquare(number){
     square.classList.add('square');
     square.innerHTML = `<span>${number}</span>`;
     return square;
+}
+// funzione per colorare i grid item al click 
+// gridItem ---> item del DOM a cui applicare l'evento click
+function clickSquare(gridItem){
+    gridItem.addEventListener('click', function(){
+        this.classList.toggle('azure');
+    });
 }
