@@ -20,16 +20,26 @@
 // 2 - Genero la tabella da 10 x 10 numerata proggressivamente inserendo l'elemento del DOM creato nel ciclo for
 let userGrid = document.querySelector('#grid');
 for (let i = 0; i < 100; i++) {
-    let square = document.createElement('div');
-    square.classList.add('square');
-    square.innerHTML = `<span>${i + 1}</span>`;
-    userGrid.append(square);
+    let gridSquare = createSquare(i + 1);
+    userGrid.append(gridSquare);
 }
 
 // 3 - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
-function clickSquare(){
-    square.addEventListener('click', function(){
-        this.classList.add('azure');
+function clickSquare(gridItem){
+    gridItem.addEventListener('click', function(){
+        this.classList.toggle('azure');
     });
 }
 // 4 - Inserisco la funzione nel ciclo del programma
+
+// FUNCTIONS
+
+// funzione per creare gli item della tabella
+// number ----> numero intero usato per calcolare quante celle devono essere create
+// return ----> l'item che deve andare a popolare la grid
+function createSquare(number){
+    let square = document.createElement('div');
+    square.classList.add('square');
+    square.innerHTML = `<span>${number}</span>`;
+    return square;
+}
