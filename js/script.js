@@ -25,8 +25,9 @@ for (let i = 0; i < 100; i++) {
     // - Creo l'elemento base del DOM
     let gridSquare = createSquare(i + 1);
     // - Creo una funzione al click per colorare la casella di azzurro ed stampa in console di un messaggio con il numero
-    // - Inserisco la funzione nel ciclo del programma
+        // - Inserisco la funzione nel ciclo del programma
     clickSquare(gridSquare);
+    // - Popolo la griglia di gioco
     userGrid.append(gridSquare);
 }
 
@@ -34,7 +35,7 @@ for (let i = 0; i < 100; i++) {
 // FUNCTIONS
 
 // funzione per creare gli item della tabella
-// number ----> numero intero usato per calcolare quante celle devono essere create
+// number ----> numero intero usato per popolare l'inner HTML e numerare le celle
 // return ----> l'item che deve andare a popolare la grid
 function createSquare(number){
     let square = document.createElement('div');
@@ -42,7 +43,7 @@ function createSquare(number){
     square.innerHTML = `<span>${number}</span>`;
     return square;
 }
-// funzione per colorare i grid item al click 
+// funzione per colorare i grid item al click e stampare in console il contenuto dell'elemento 
 // gridItem ---> item del DOM a cui applicare l'evento click
 function clickSquare(gridItem){
     gridItem.addEventListener('click', function(){
@@ -57,10 +58,12 @@ function playGrid(){
         if(active === true){
             userGrid.classList.remove('active');
             userGrid.classList.add('hide');  
-            active = false; 
+            play.innerHTML = 'Open';
+            active = false;
         }else if(active === false){
             userGrid.classList.remove('hide');
-            userGrid.classList.add('active');  
+            userGrid.classList.add('active'); 
+            play.innerHTML = 'Close';
             active = true; 
         }
     });

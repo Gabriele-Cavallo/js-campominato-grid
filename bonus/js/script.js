@@ -75,7 +75,7 @@ function playGrid(){
             userGrid.classList.remove('active');
             userGrid.classList.add('hide');  
             userGrid.innerHTML = '';
-            play.innerHTML = 'Play';
+            play.innerHTML = 'Open';
             active = false; 
         }else if(active === false){
             // - Genero una griglia in base alla difficoltà impostata
@@ -89,7 +89,7 @@ function playGrid(){
             }
             userGrid.classList.remove('hide');
             userGrid.classList.add('active');  
-            play.innerHTML = 'Reset';
+            play.innerHTML = 'Close';
             active = true; 
         }
     });
